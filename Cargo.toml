@@ -1,0 +1,23 @@
+[package]
+name = "livesplit_rage2"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+asr = { git = "https://github.com/CryZe/asr", features = ["signature", "integer-vars"] }
+spinning_top = "0.2.5"
+numtoa = "0.2.4"
+
+[lib]
+crate-type = ["cdylib"]
+
+[profile.release]
+lto = true
+panic = "abort"
+codegen-units = 1
+strip = true
+
+[profile.release.build-override]
+opt-level = 0
